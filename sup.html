@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ A Special Surprise for Asra Tabassum ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .container {
+            position: relative;
+            width: 320px;
+            height: 500px;
+            perspective: 1500px;
+        }
+        
+        .magical-box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1.5s;
+        }
+        
+        .magical-box.open {
+            transform: rotateY(180deg);
+        }
+        
+        .box-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .box-front {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .box-back {
+            background: rgba(255, 255, 255, 0.9);
+            transform: rotateY(180deg);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .gift-wrap {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .gift-box {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            border-radius: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .gift-lid {
+            position: absolute;
+            width: 140px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            border-radius: 8px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -110%);
+            transform-origin: bottom;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 2;
+            transition: transform 1s;
+        }
+        
+        .ribbon-vertical {
+            position: absolute;
+            width: 20px;
+            height: 120px;
+            background: #ff6b6b;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+        
+        .ribbon-horizontal {
+            position: absolute;
+            width: 120px;
+            height: 20px;
+            background: #ff6b6b;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+        
+        .bow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -150%);
+            z-index: 4;
+        }
+        
+        .bow-left, .bow-right {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ff6b6b;
+        }
+        
+        .bow-left {
+            left: -20px;
+        }
+        
+        .bow-right {
+            right: -20px;
+        }
+        
+        .bow-knot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff4757;
+            transform: rotate(45deg);
+            top: 50%;
+            left: 50%;
+            margin-top: -10px;
+            margin-left: -10px;
+        }
+        
+        .front-title {
+            margin-top: 30px;
+            font-size: 24px;
+            color: #e84393;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .front-subtitle {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #636e72;
+        }
+        
+        .tap-instruction {
+            position: absolute;
+            bottom: 20px;
+            font-size: 14px;
+            color: #636e72;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .heart {
+            position: absolute;
+            animation: float-up 4s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100%) scale(0.5) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100%) scale(1.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .message-container {
+            position: relative;
+            width: 100%;
+            height: 60%;
+            overflow: hidden;
+        }
+        
+        .hidden-message {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s, transform 1s;
+        }
+        
+        .hidden-message.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .asra-name {
+            font-size: 32px;
+            color: #e84393;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e84393, 0 0 20px #e84393;
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e84393, 0 0 40px #e84393;
+            }
+        }
+        
+        .message-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #2d3436;
+            text-align: center;
+            max-width: 90%;
+            margin-bottom: 20px;
+        }
+        
+        .special-button {
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 15px;
+        }
+        
+        .special-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .special-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        
+        .photo-frame {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            border: 10px solid #f5f6fa;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .photo-text {
+            font-size: 12px;
+            color: #636e72;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .magic-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="container">
+        <div class="magical-box">
+            <div class="box-face box-front">
+                <div class="gift-wrap">
+                    <div class="gift-box"></div>
+                    <div class="gift-lid"></div>
+                    <div class="ribbon-vertical"></div>
+                    <div class="ribbon-horizontal"></div>
+                    <div class="bow">
+                        <div class="bow-left"></div>
+                        <div class="bow-right"></div>
+                        <div class="bow-knot"></div>
+                    </div>
+                </div>
+                <h1 class="front-title">A Special Surprise</h1>
+                <p class="front-subtitle">Just for someone amazing</p>
+                <p class="tap-instruction">Tap to unwrap your gift</p>
+                <div class="magic-stars"></div>
+            </div>
+            <div class="box-face box-back">
+                <div class="message-container">
+                    <div class="hidden-message">
+                        <div class="photo-frame">
+                            <div class="photo-placeholder">
+                                <p class="photo-text">A place for<br>memories with<br>Asra</p>
+                            </div>
+                        </div>
+                        <h1 class="asra-name">Asra Tabassum</h1>
+                        <p class="message-text">
+                            Dear sister, you bring so much joy and light into my life. 
+                            Your kindness, strength, and beautiful smile make every day brighter.
+                            Thank you for always being there for me through thick and thin.
+                            You are truly a blessing!
+                        </p>
+                        <button class="special-button" id="celebration-button">Celebrate Our Bond</button>
+                    </div>
+                </div>
+                <div class="floating-hearts"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Box opening animation
+        const magicalBox = document.querySelector('.magical-box');
+        const hiddenMessage = document.querySelector('.hidden-message');
+        
+        magicalBox.addEventListener('click', function() {
+            if (!this.classList.contains('open')) {
+                this.classList.add('open');
+                
+                // Animate gift opening
+                document.querySelector('.gift-lid').style.transform = 'translate(-50%, -250%) rotateX(60deg)';
+                
+                // Show hidden message after flip animation completes
+                setTimeout(() => {
+                    hiddenMessage.classList.add('visible');
+                }, 1500);
+                
+                // Create floating hearts
+                createFloatingHearts();
+            }
+        });
+        
+        // Create floating hearts
+        function createFloatingHearts() {
+            const heartsContainer = document.querySelector('.floating-hearts');
+            const colors = ['#ff6b6b', '#ff9ff3', '#feca57', '#48dbfb', '#1dd1a1'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '❤';
+                    heart.className = 'heart';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    heart.style.animationDelay = (Math.random() * 2) + 's';
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    // Remove heart after animation
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 6000);
+                }, i * 300);
+            }
+        }
+        
+        // Create stars animation
+        function createStars() {
+            const starsContainer = document.querySelector('.magic-stars');
+            const colors = ['#feca57', '#48dbfb', '#ff9ff3', '#1dd1a1', '#ff6b6b'];
+            
+            for (let i = 0; i < 30; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                star.style.width = (Math.random() * 10 + 5) + 'px';
+                star.style.height = (Math.random() * 10 + 5) + 'px';
+                
+                starsContainer.appendChild(star);
+                
+                // Animate star twinkling
+                setInterval(() => {
+                    star.style.opacity = '0';
+                    setTimeout(() => {
+                        star.style.opacity = '1';
+                        setTimeout(() => {
+                            star.style.opacity = '0';
+                        }, 200);
+                    }, 200);
+                }, Math.random() * 3000 + 1000);
+            }
+        }
+        
+        // Initialize stars
+        createStars();
+        
+        // Confetti celebration
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let confettiAnimation;
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        const celebrationButton = document.getElementById('celebration-button');
+        celebrationButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            createConfetti();
+        });
+        
+        class Confetti {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height - canvas.height;
+                this.size = Math.random() * 10 + 5;
+                this.speed = Math.random() * 3 + 2;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+                
+                const colors = ['#ff6b6b', '#ff9ff3', '#feca57', '#48dbfb', '#1dd1a1', '#f368e0', '#ff9f43'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                const shapes = ['circle', 'square', 'triangle'];
+                this.shape = shapes[Math.floor(Math.random() * shapes.length)];
+            }
+            
+            update() {
+                this.y += this.speed;
+                this.rotation += this.rotationSpeed;
+                
+                if (this.y > canvas.height) {
+                    this.y = -this.size;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+                
+                switch(this.shape) {
+                    case 'circle':
+                        ctx.beginPath();
+                        ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+                        ctx.fill();
+                        break;
+                    case 'square':
+                        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                        break;
+                    case 'triangle':
+                        ctx.beginPath();
+                        ctx.moveTo(0, -this.size / 2);
+                        ctx.lineTo(this.size / 2, this.size / 2);
+                        ctx.lineTo(-this.size / 2, this.size / 2);
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                }
+                
+                ctx.restore();
+            }
+        }
+        
+        const confettiPieces = [];
+        
+        function createConfetti() {
+            // Clear any existing animation
+            if (confettiAnimation) {
+                cancelAnimationFrame(confettiAnimation);
+            }
+            
+            // Create confetti pieces
+            confettiPieces.length = 0;
+            for (let i = 0; i < 150; i++) {
+                confettiPieces.push(new Confetti());
+            }
+            
+            // Start animation
+            animateConfetti();
+            
+            // Stop after 6 seconds
+            setTimeout(() => {
+                cancelAnimationFrame(confettiAnimation);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }, 6000);
+        }
+        
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            confettiPieces.forEach(piece => {
+                piece.update();
+                piece.draw();
+            });
+            
+            confettiAnimation = requestAnimationFrame(animateConfetti);
+        }
+    </script>
+</body>
+</html>
